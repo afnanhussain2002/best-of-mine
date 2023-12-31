@@ -1,9 +1,16 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "./sheard/navbar/Navbar";
+import Footer from "./sheard/footer/Footer";
 
 
 const App = () => {
   return (
     <div>
-      <h3 className="text-5xl text-center text-primary-color">Tailwind css installed</h3>
+     <Navbar></Navbar>
+     <div className="min-h-screen">
+      <Outlet></Outlet>
+     </div>
+     <Footer></Footer>
     </div>
   );
 };
