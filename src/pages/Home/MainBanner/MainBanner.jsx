@@ -1,6 +1,4 @@
 import { FaSearch } from "react-icons/fa";
-import banner from '../../../assets/main-banner.png'
-import Navbar from "../../../sheard/navbar/Navbar";
 const MainBanner = () => {
     return (
         <div className="bg-[url(https://i.ibb.co/19XYVfS/Best-Of-Mine-website-banner-1.png)] bg-cover">
@@ -11,7 +9,7 @@ const MainBanner = () => {
                 <h1
                     className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl text-center text-gray-800 dark:text-white font-black leading-10">
                     Showcasing Your 
-                    <span className="text-primary-color"> Favorites</span>
+                    <span className="text-primary-color text-3xl ml-3 mr-3 bg-white p-2 rounded-xl"> Favorites</span>
                     , Celebrating Your Style
                 </h1>
                 <p className="mt-5 sm:mt-10 lg:w-10/12 text-gray-600 dark:text-gray-300 font-normal text-center text-xl">
@@ -21,7 +19,7 @@ const MainBanner = () => {
             <div className="flex w-11/12 md:w-8/12 xl:w-6/12">
                 <div className="flex rounded-md w-full">
                     <input type="text" name="q"
-                        className="w-full p-3 rounded-md rounded-r-none border border-gray-300 placeholder-current dark:bg-white  dark:text-gray-300 dark:border-none "
+                        className="w-full p-3 rounded-md rounded-r-none border border-gray-300 placeholder-current dark:bg-white  dark:text-primary-color dark:border-none "
                         placeholder="keyword" />
                     <button
                         className="inline-flex items-center gap-2 bg-primary-color text-white text-lg font-semibold py-3 px-6 rounded-r-md">
