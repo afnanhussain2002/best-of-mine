@@ -1,9 +1,10 @@
 import { FaSearch } from "react-icons/fa";
 import banner from '../../../assets/main-banner.png'
-
+import Navbar from "../../../sheard/navbar/Navbar";
 const MainBanner = () => {
     return (
         <div className="bg-[url(https://i.ibb.co/19XYVfS/Best-Of-Mine-website-banner-1.png)] bg-cover">
+           
     <div className="dark:bg-transparent">
         <div className="mx-auto flex flex-col items-center py-12 sm:py-24">
             <div className="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col mb-5 sm:mb-10">
@@ -14,7 +15,7 @@ const MainBanner = () => {
                     , Celebrating Your Style
                 </h1>
                 <p className="mt-5 sm:mt-10 lg:w-10/12 text-gray-600 dark:text-gray-300 font-normal text-center text-xl">
-                    A Community build tailwind component library.
+                    Save Your Favorite Items For Showing others
                 </p>
             </div>
             <div className="flex w-11/12 md:w-8/12 xl:w-6/12">
