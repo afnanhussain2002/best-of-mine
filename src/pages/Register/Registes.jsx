@@ -1,4 +1,33 @@
+
+import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
 const Register = () => {
+  const {createUser, addUserProfile} = useAuth()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate()
+  const onsubmit = (data) =>{
+       console.log(data.name);
+       createUser(data.email, data.password)
+       .then(result =>{
+        console.log(result)
+        addUserProfile(data.name, data.photo)
+        .then(()=>{
+          console.log('profile update');
+          navigate('/')
+        })
+  })
+       .catch(err =>{
+        console.log(err.message);
+       })
+       
+  }
   return (
     <div className="min-h-screen bg-pink-300 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -8,7 +37,7 @@ const Register = () => {
             <div>
               <h1 className="text-2xl font-semibold text-primary-color">Register Now</h1>
             </div>
-            <form className="divide-y divide-gray-200">
+            <form className="divide-y divide-gray-200" onSubmit={handleSubmit(onsubmit)}>
               <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                 <div className="relative">
                   <input
@@ -18,10 +47,13 @@ const Register = () => {
                     type="text"
                     className="peer placeholder-transparent h-10 w-full border-b-2 border-primary-color  text-primary-color focus:outline-none focus:borer-rose-600"
                     placeholder="Your name"
+                    {...register('name')}
+                    required
                   />
                   <label
                     htmlFor="email"
                     className="absolute left-0 -top-3.5 text-primary-color  text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-primary-color  peer-focus:text-sm"
+                    
                   >
                     Your Name
                   </label>
@@ -34,6 +66,8 @@ const Register = () => {
                     type="text"
                     className="peer placeholder-transparent h-10 w-full border-b-2 border-primary-color  text-primary-color focus:outline-none focus:borer-rose-600"
                     placeholder="Your name"
+                    {...register('photo')}
+                    required
                   />
                   <label
                     htmlFor="photo"
@@ -50,6 +84,8 @@ const Register = () => {
                     type="email"
                     className="peer placeholder-transparent h-10 w-full border-b-2 border-primary-color  text-primary-color focus:outline-none focus:borer-rose-600"
                     placeholder="Email address"
+                    {...register('email')}
+                    required
                   />
                   <label
                     htmlFor="email"
@@ -66,6 +102,8 @@ const Register = () => {
                     type="password"
                     className="peer placeholder-transparent h-10 w-full border-b-2 border-primary-color  text-primary-color focus:outline-none focus:borer-rose-600"
                     placeholder="Password"
+                    {...register('password')}
+                    required
                   />
                   <label
                     htmlFor="password"
@@ -75,7 +113,7 @@ const Register = () => {
                   </label>
                 </div>
                 <div className="relative">
-                  <button className="bg-primary-color text-white rounded-md px-2 py-1 font-bold">
+                  <button className="bg-primary-color text-white rounded-md px-2 py-1 font-bold" type="submit">
                     Register
                   </button>
                 </div>

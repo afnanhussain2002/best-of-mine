@@ -1,6 +1,25 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+
 
 const Login = () => {
+  const {signInUser} = useAuth()
+  const navigate = useNavigate();
+  const handleLogin = (e) =>{
+    e.preventDefault()
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signInUser(email,password)
+    .then(result =>{
+      console.log(result);
+      navigate('/')
+    })
+    .catch(err =>{
+      console.log(err.message);
+    })
+  }
   return (
     <div className="min-h-screen bg-pink-300 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -12,7 +31,7 @@ const Login = () => {
                 Login Now
               </h1>
             </div>
-            <form className="divide-y divide-gray-200">
+            <form className="divide-y divide-gray-200" onSubmit={handleLogin}>
               <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
               
                 <div className="relative">

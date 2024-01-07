@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import Logo from "../logo/Logo";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const {user, logout} = useAuth()
+  const handleLogout = () =>{
+     logout()
+  }
     const navItems = <>
       <li><Link className="border mr-2 border-primary-color"to={'/about'}>About</Link></li>
       <li><Link className="border mr-2 border-primary-color"to={'/contact'}>Contact</Link></li>
@@ -27,7 +32,23 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {
+            user ? 
+              <>
+              
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img alt="Tailwind CSS Navbar component" src={user.photoURL ? user.photoURL : "https://tse2.mm.bing.net/th?id=OIP.A1O-vzsBENQZX_icVRjZdwHaHa&pid=Api&P=0&h=220"} />
+                </div>
+              </div>
+              <button className="btn bg-primary-color text-white font-bold hover:bg-white hover:text-primary-color hover:border-primary-color" onClick={handleLogout}>Logout</button>
+              </>
+                
+            
+          
+        :
+            <Link to={'/login'} className="btn bg-primary-color text-white font-bold hover:bg-white hover:text-primary-color hover:border-primary-color">Login</Link>
+          }
         </div>
       </div>
     );
