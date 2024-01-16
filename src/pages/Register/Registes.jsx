@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {createUser, addUserProfile} = useAuth()
@@ -20,7 +21,17 @@ const Register = () => {
         addUserProfile(data.name, data.photo)
         .then(()=>{
           console.log('profile update');
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            iconColor:'#BD27EA',
+            title: 'Your account has been created',
+            color:'#BD27EA',
+            showConfirmButton: false,
+            timer: 1500
+          })
           navigate('/')
+          reset()
         })
   })
        .catch(err =>{

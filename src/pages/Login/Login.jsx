@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -14,6 +15,15 @@ const Login = () => {
     signInUser(email,password)
     .then(result =>{
       console.log(result);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        iconColor:'#BD27EA',
+        title: 'You have successfully logged in',
+        color:'#BD27EA',
+        showConfirmButton: false,
+        timer: 1500
+      })
       navigate('/')
     })
     .catch(err =>{
