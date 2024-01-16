@@ -1,7 +1,7 @@
 
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const {createUser, addUserProfile} = useAuth()
@@ -120,6 +120,7 @@ const Register = () => {
               </div>
             </form>
           </div>
+          <p className="text-primary-color">already have an account <span className="font-bold underline"><Link to={'/login'}> Log in </Link></span></p>
         </div>
       </div>
     </div>

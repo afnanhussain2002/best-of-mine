@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 
@@ -74,6 +74,7 @@ const Login = () => {
               </div>
             </form>
           </div>
+          <p className="text-primary-color">Don not have any account <span className="font-bold underline"><Link to={'/register'}> Sign up </Link></span></p>
         </div>
       </div>
     </div>
